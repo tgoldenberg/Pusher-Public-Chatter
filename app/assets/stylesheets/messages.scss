@@ -61,8 +61,16 @@ h4 {
   }
 
   td {
-    font-size: 17px;
+
     height: 50px;
     overflow:scroll;
   }
+}
+.message-content {
+  font-weight: 500;
+  font-size: 17px;
+}
+.message-sm {
+  font-size: 15px;
+
 }
