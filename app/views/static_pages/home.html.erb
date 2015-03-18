@@ -1,0 +1,22 @@
+<h1>StaticPages#home</h1>
+<p>Find me in app/views/static_pages/home.html.erb</p>
+
+
+<div class="container conversation">
+  <ul>
+    <% @messages.each do |message| %>
+    <div class="messages container">
+      <p> <%= message.body %></p><br />
+    </div>
+    <% end %>
+  </ul>
+  <%= form_for @message, remote: true do |f| %>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Send', :class => 'btn btn-primary' %>
+  </div>
+  <% end %>
+</div>
