@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all.order("created_at DESC")
     @message = Message.new
+    @users = User.all
   end
 
   # GET /messages/1

@@ -1,3 +1,63 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar {
+  overflow: hidden;
+}
+.col-md-12 {
+  overflow: hidden;
+}
+
+.well {
+  border-radius: 12px;
+  box-shadow: 2px 2px 3px #BEBEBE;
+}
+
+.well-short {
+  width: 380px;
+  height: 110px;
+
+  h1 {
+    font-size: 30px;
+    margin-top: 30px;
+  }
+}
+
+.well-long {
+  width: 700px;
+}
+
+.input-box {
+  text-align: left;
+  .text-field {
+    border-radius: 6px;
+    width: 700px;
+    margin-left: 25px;
+  }
+  .btn-primary {
+    width: 700px;
+    margin-left: 25px;
+  }
+}
+
+/* chat table */
+.table-well {
+  width: 700px;
+  height: 300px;
+  overflow: scroll;
+  padding:0px;
+}
+.table {
+  height: 330px;
+  overflow: scroll;
+
+  tr {
+    overflow:scroll;
+  }
+
+  td {
+    font-size: 17px;
+    height: 50px;
+    overflow:scroll;
+  }
+}

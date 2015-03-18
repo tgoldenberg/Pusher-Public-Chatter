@@ -1,34 +1,53 @@
-<h1>Chat Room</h1>
-
-<div class="container conversation">
-  <ul id="body-container">
-    <% @messages.each do |message| %>
-    <div class="messages container">
-      <p id="body"> <%= message.body %></p><br />
+<div class="col-md-12">
+  <div class="col-md-4">
+    <div class="well container well-short">
+      <h1>Users Online</h1>
     </div>
+    <div class="container">
+    <% @users.each do |user| %>
+      <p> <%= user.email %></p>
     <% end %>
-  </ul>
+    </div>
 
-  <%= form_for @message, remote: true do |f| %>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :class => 'text-field' %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Send', :class => 'btn btn-primary' %>
+  <div class="col-md-8">
+    <div class="well container well-long">
+      <h1>Chat Room</h1>
+    </div>
+    <div class="container-fluid well table-well conversation">
+      <table class="table table-striped">
+        <tbody>
+          <% @messages.each do |message| %>
+          <tr>
+            <td><%= message.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="container input-box">
+      <%= form_for @message, remote: true do |f| %>
+      <div class="field">
+        <%= f.text_area :body, :class => 'text-field', placeholder: 'type a message here' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Send', :class => 'btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <% end %>
 </div>
+
 <script>
 var pusher = new Pusher('42b5fd3755f8e9edc491');
 var channel = pusher.subscribe('my-channel');
 
   channel.bind('my-event', function(data) {
 
-
     $('.text-field').val('');
-    $('#body-container').prepend('<%= escape_javascript(render 'message') %>');
-    $('#body').first().html(data.message);
+    $('#body-container').prepend('<tr></tr>');
+    $('.table').prepend('<tr><td>' + data.message + '</td></tr>');
 
   });
 
