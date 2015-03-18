@@ -27,8 +27,11 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.create message_params
+    @message.set_user!(current_user)
     json = @message.body.to_s
-    Pusher.trigger('my-channel', 'my-event', { :message => json } )
+    jsonName = @message.user.username.to_s
+    jsonDate = @message.created_at.strftime("%d %b. %Y")
+    Pusher.trigger('my-channel', 'my-event', { :message => json, :username => jsonName, :origin => jsonDate } )
   end
 
   # PATCH/PUT /messages/1

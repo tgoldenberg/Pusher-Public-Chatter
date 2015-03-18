@@ -1,11 +1,11 @@
 <div class="col-md-12">
   <div class="col-md-4">
     <div class="well container well-short">
-      <h1>Users Online</h1>
+      <h1>Users</h1>
     </div>
     <div class="container">
     <% @users.each do |user| %>
-      <p> <%= user.email %></p>
+      <h4> <%= user.username %></h4>
     <% end %>
     </div>
 
@@ -20,6 +20,8 @@
           <% @messages.each do |message| %>
           <tr>
             <td><%= message.body %></td>
+            <td> <%= message.user.username %></td>
+            <td> <%= message.created_at.strftime("%d %b. %Y") %></td>
           </tr>
           <% end %>
         </tbody>
@@ -47,7 +49,7 @@ var channel = pusher.subscribe('my-channel');
 
     $('.text-field').val('');
     $('#body-container').prepend('<tr></tr>');
-    $('.table').prepend('<tr><td>' + data.message + '</td></tr>');
+    $('.table').prepend('<tr><td>' + data.message + '</td><td>' + data.username + '</td><td>' + data.origin + '</td></tr>');
 
   });
 
