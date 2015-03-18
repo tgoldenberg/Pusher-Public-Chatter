@@ -8,4 +8,7 @@ Currently no validation for the messages#create action
 
 I tried this briefly and got errors in Heroku so will leave it till later. Unfortunately, this can potentially throw the server.
 
-
+TODO: 
+1. Add validations for user in order to create a message
+2. Add jQuery to allow submitting message through return key
+3. Make so that other user's submission doesn't clear user's text field
